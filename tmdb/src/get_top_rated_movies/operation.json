@@ -1,0 +1,5 @@
+{
+  "name": "get_top_rated_movies",
+  "title": "Get Top Rated Movies",
+  "description": "Get top 20 rated movies from IMDB"
+}

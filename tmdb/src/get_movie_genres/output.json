@@ -1,0 +1,1 @@
+{"type":"object","properties":{"genres":{"type":"array","items":{"type":"object","properties":{"id":{"type":"number"},"name":{"type":"string"}},"additionalProperties":false,"required":["id","name"],"advanced":[]}}},"additionalProperties":false,"required":["genres"],"$schema":"http://json-schema.org/draft-07/schema#","advanced":[]}

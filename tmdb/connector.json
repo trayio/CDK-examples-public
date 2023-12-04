@@ -1,0 +1,12 @@
+{
+  "name": "[namespace]-tmdb",
+  "version": "1.0",
+  "title": "TMDB",
+  "description": "",
+  "service": {
+    "name": "[service-name]",
+    "version": "1"
+  },
+  "tags": ["service"],
+  "isTrigger": false
+}

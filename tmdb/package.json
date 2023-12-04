@@ -1,0 +1,43 @@
+{
+  "name": "namespace-tmdb",
+  "version": "1.0.0",
+  "description": "The movie database connector",
+  "engines": {
+    "node": ">=18.x"
+  },
+  "exports": {
+    "./*": "./dist/*.js"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "*",
+        "dist/*"
+      ]
+    }
+  },
+  "files": [
+    "/dist"
+  ],
+  "dependencies": {
+    "@trayio/cdk-dsl": "2.1.1",
+    "@trayio/cdk-runtime": "2.1.1",
+    "axios": "^1.6.2",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/jest": "29.5.10",
+    "@types/node": "*",
+    "jest": "29.7.0",
+    "ts-jest": "29.1.1",
+    "ts-node": "10.9.1",
+    "typescript": "5.3.2",
+    "typescript-cp": "0.1.9"
+  },
+  "scripts": {
+    "reinstall": "rm package-lock.json && rm -rf node_modules && npm cache clean --force && npm install",
+    "clean": "rm -rf dist && rm tsconfig.tsbuildinfo",
+    "compile": "tsc --build && tscp >> /dev/null",
+    "test": "jest --config ./jest.config.js"
+  }
+}
