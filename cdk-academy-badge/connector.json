@@ -1,0 +1,12 @@
+{
+    "name": "[namespace]-cdk-academy-badge",
+    "version": "1.0",
+    "title": "CDK Academy Badge",
+    "description": "Connector for Tray.io's Academy CDK badge",
+    "service": {
+        "name": "[service-name]",
+        "version": "1"
+    },
+    "tags": ["service"],
+    "isTrigger": false
+}
