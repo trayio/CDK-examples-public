@@ -1,0 +1,1 @@
+{"type":"object","properties":{"status":{"type":"number"},"headers":{"type":"object","properties":{},"additionalProperties":true,"advanced":[]},"body":{}},"additionalProperties":false,"required":["body","headers","status"],"$schema":"http://json-schema.org/draft-07/schema#","advanced":[]}
