@@ -4,4 +4,6 @@ export type Post = {
   title: string;
   body: string;
 };
-export type ListPostsOutput = Post[];
+export type ListPostsOutput = {
+  results: Post[];
+};

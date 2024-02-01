@@ -21,7 +21,7 @@ export const getSomethingHandler = OperationHandlerSetup.configureHandler<
     // We check if the List Posts operation was successful
     const postsValue = OperationHandlerResult.getSuccessfulValueOrFail(posts);
     // We iterate through the response array and strip out the ids
-    const postsWithoutIds = postsValue.map((post) => {
+    const postsWithoutIds = postsValue.results.map((post) => {
       return {
         title: post.title,
         body: post.body,

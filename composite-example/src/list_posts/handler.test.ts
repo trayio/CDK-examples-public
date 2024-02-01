@@ -9,15 +9,14 @@ OperationHandlerTestSetup.configureHandlerTest(
     handlerTest
       .usingHandlerContext("test")
       .nothingBeforeAll()
-      .testCase("should do return an array posts", (testCase) =>
+      .testCase("should do return an array of posts", (testCase) =>
         testCase
           .givenNothing()
           .when(() => ({}))
           .then(({ output }) => {
-            // console.log(output);
             const outputValue =
               OperationHandlerResult.getSuccessfulValueOrFail(output);
-            expect(outputValue).toEqual(expect.any(Array));
+            expect(outputValue.results).toEqual(expect.any(Array));
           })
           .finallyDoNothing()
       )
