@@ -14,7 +14,7 @@ OperationHandlerTestSetup.configureHandlerTest(
           .givenNothing()
           .when(() => ({
             method: HttpMethod.GET,
-            fullUrl: 'https://jsonplaceholder.typicode.com/posts/1',
+            url: { fullUrl: 'https://jsonplaceholder.typicode.com/posts/1' },
             headers: {},
             queryParams: {},
             bodyType: HttpRequestBodyType.NONE,

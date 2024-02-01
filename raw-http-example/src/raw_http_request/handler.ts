@@ -14,7 +14,7 @@ export const rawHttpRequestHandler = OperationHandlerSetup.configureHandler<
   RawHttpRequestOutput
 >((handler) =>
   handler.usingComposite(async (ctx, input, invoke) => {
-    const { method, fullUrl, headers, queryParams, bodyType, body } = input;
+    const { method, url, headers, queryParams, bodyType, body } = input;
 
     const headersForAxios = Object.entries(headers ?? {}).reduce<
       Record<string, string>
@@ -27,9 +27,18 @@ export const rawHttpRequestHandler = OperationHandlerSetup.configureHandler<
       };
     }, {});
 
+    let urlString: string;
+    if ('fullUrl' in url) {
+      urlString = url.fullUrl;
+    } else if ('endpoint' in url) {
+      urlString = url.endpoint;
+    } else {
+      throw new Error('URL is required.');
+    }
+
     const axiosConfig: AxiosRequestConfig = {
       method,
-      url: fullUrl,
+      url: urlString,
       headers: headersForAxios,
       params: queryParams,
       data: body,
