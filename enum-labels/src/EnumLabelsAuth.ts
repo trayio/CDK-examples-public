@@ -1,1 +1,0 @@
-export type EnumLabelsAuth = never; // No Authentication

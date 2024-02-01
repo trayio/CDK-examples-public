@@ -1,10 +1,10 @@
 import { OperationHandlerSetup } from '@trayio/cdk-dsl/connector/operation/OperationHandlerSetup';
-import { EnumLabelsAuth } from '../EnumLabelsAuth';
+import { PropertyPanelUxAuth } from '../PropertyPanelUxAuth';
 import { CreatePostInput } from './input';
 import { CreatePostOutput } from './output';
 
 export const createPostHandler = OperationHandlerSetup.configureHandler<
-	EnumLabelsAuth,
+	PropertyPanelUxAuth,
 	CreatePostInput,
 	CreatePostOutput
 >((handler) =>

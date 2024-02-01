@@ -1,7 +1,7 @@
 {
-	"name": "enum-labels",
+	"name": "property-panel-ux",
 	"version": "1.0.0",
-	"description": "An example connector of how to use enum labels",
+	"description": "An example connector showing how to use UI features in the property panel, including: field titles, descriptions (aka tooltips), default values, advanced properties and oneOf (aka dropdowns) field types.",
 	"engines": {
 		"node": ">=18.x"
 	},
