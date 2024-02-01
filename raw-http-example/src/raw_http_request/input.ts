@@ -1,22 +1,22 @@
 export enum HttpMethod {
-  GET = "GET",
-  POST = "POST",
-  PUT = "PUT",
-  DELETE = "DELETE",
-  PATCH = "PATCH",
-  HEAD = "HEAD",
-  OPTIONS = "OPTIONS",
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
+  PATCH = 'PATCH',
+  HEAD = 'HEAD',
+  OPTIONS = 'OPTIONS',
 }
 
 export enum HttpRequestBodyType {
-  RAW = "raw",
-  FORM_DATA = "form-data",
-  FORM_URL_ENCODED = "form-url-encoded",
-  BINARY = "binary",
-  NONE = "none",
+  RAW = 'raw',
+  FORM_DATA = 'form-data',
+  FORM_URL_ENCODED = 'form-url-encoded',
+  BINARY = 'binary',
+  NONE = 'none',
 }
 
-export type RawHttpInput = {
+export type RawHttpRequestInput = {
   /**
    * @title Method
    * @description The HTTP verb to perform the request with.

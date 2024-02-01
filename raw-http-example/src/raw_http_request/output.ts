@@ -1,4 +1,4 @@
-export type RawHttpOutput = {
+export type RawHttpRequestOutput = {
   status: number;
   headers: object;
   body: any;

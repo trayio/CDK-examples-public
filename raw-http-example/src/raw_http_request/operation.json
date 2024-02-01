@@ -1,0 +1,5 @@
+{
+    "name": "raw_http_request",
+    "title": "Raw HTTP request (advanced)",
+    "description": "Perform a raw HTTP request with some pre-configuration and processing by the connector, such as authentication."
+}

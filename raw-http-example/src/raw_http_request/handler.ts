@@ -1,17 +1,17 @@
-import { OperationHandlerSetup } from "@trayio/cdk-dsl/connector/operation/OperationHandlerSetup";
+import { OperationHandlerSetup } from '@trayio/cdk-dsl/connector/operation/OperationHandlerSetup';
 import {
   OperationHandlerError,
   OperationHandlerResult,
-} from "@trayio/cdk-dsl/connector/operation/OperationHandler";
-import axios, { AxiosRequestConfig } from "axios";
-import { RawHttpExampleAuth } from "../RawHttpExampleAuth";
-import { RawHttpInput } from "./input";
-import { RawHttpOutput } from "./output";
+} from '@trayio/cdk-dsl/connector/operation/OperationHandler';
+import axios, { AxiosRequestConfig } from 'axios';
+import { RawHttpExampleAuth } from '../RawHttpExampleAuth';
+import { RawHttpRequestInput } from './input';
+import { RawHttpRequestOutput } from './output';
 
-export const rawHttpHandler = OperationHandlerSetup.configureHandler<
+export const rawHttpRequestHandler = OperationHandlerSetup.configureHandler<
   RawHttpExampleAuth,
-  RawHttpInput,
-  RawHttpOutput
+  RawHttpRequestInput,
+  RawHttpRequestOutput
 >((handler) =>
   handler.usingComposite(async (ctx, input, invoke) => {
     const { method, fullUrl, headers, queryParams, bodyType, body } = input;
@@ -20,7 +20,7 @@ export const rawHttpHandler = OperationHandlerSetup.configureHandler<
       Record<string, string>
     >((acc, [key, value]) => {
       const newValue =
-        typeof value === "string" ? value : JSON.stringify(value);
+        typeof value === 'string' ? value : JSON.stringify(value);
       return {
         ...acc,
         [key.toLowerCase()]: newValue,
@@ -38,7 +38,7 @@ export const rawHttpHandler = OperationHandlerSetup.configureHandler<
     try {
       const response = await axios(axiosConfig);
 
-      console.log("response", response);
+      console.log('response', response);
 
       return OperationHandlerResult.success({
         status: response.status,
