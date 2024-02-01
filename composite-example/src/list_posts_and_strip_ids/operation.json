@@ -1,0 +1,5 @@
+{
+  "name": "list_posts_and_strip_ids",
+  "title": "ListPostsAndStripIds",
+  "description": "Retrieve a list of posts and strip UserId and ID from the response."
+}
