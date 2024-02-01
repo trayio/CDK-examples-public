@@ -1,15 +1,14 @@
 import { OperationHandlerSetup } from "@trayio/cdk-dsl/connector/operation/OperationHandlerSetup";
-import { SmessTestSlackAuth } from "../SmessTestSlackAuth";
+import { DdlExampleAuth } from "../DdlExampleAuth";
 import { ListChannelsDdlInput } from "./input";
 import { ListChannelsDdlOutput } from "./output";
 import {
-  OperationHandlerError,
   OperationHandlerResult,
 } from "@trayio/cdk-dsl/connector/operation/OperationHandler";
 import { listChannelsHandler } from "../list_channels/handler";
 
 export const listChannelsDdlHandler = OperationHandlerSetup.configureHandler<
-  SmessTestSlackAuth,
+  DdlExampleAuth,
   ListChannelsDdlInput,
   ListChannelsDdlOutput
 >((handler) =>

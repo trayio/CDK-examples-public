@@ -10,4 +10,4 @@ export type TestSlackAppAuth = {
     client_secret: string
 }
 
-export type SmessTestSlackAuth = Oauth2OperationHandlerAuth<TestSlackUserAuth, TestSlackAppAuth>
+export type DdlExampleAuth = Oauth2OperationHandlerAuth<TestSlackUserAuth, TestSlackAppAuth>

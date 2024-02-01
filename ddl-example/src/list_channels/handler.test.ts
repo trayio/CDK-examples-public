@@ -14,7 +14,6 @@ OperationHandlerTestSetup.configureHandlerTest(
           .givenNothing()
           .when(() => ({ id: 2 }))
           .then(({ output }) => {
-            // console.log(output);
             const outputValue =
               OperationHandlerResult.getSuccessfulValueOrFail(output);
             expect(outputValue.ok).toEqual(false);

@@ -14,7 +14,6 @@ OperationHandlerTestSetup.configureHandlerTest(
 					.givenNothing()
 					.when(() => ({ channel: '<slack_channel_id>', text: 'blah2' }))
 					.then(({ output }) => {
-						// console.log(JSON.stringify(output));
 						const outputValue = OperationHandlerResult.getSuccessfulValueOrFail(output)
 						expect(outputValue.ok).toBe(false)
 					})

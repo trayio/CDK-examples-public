@@ -1,10 +1,10 @@
 import { OperationHandlerSetup } from "@trayio/cdk-dsl/connector/operation/OperationHandlerSetup";
-import { SmessTestSlackAuth } from "../SmessTestSlackAuth";
+import { DdlExampleAuth } from "../DdlExampleAuth";
 import { ListChannelsInput } from "./input";
 import { ListChannelsOutput } from "./output";
 
 export const listChannelsHandler = OperationHandlerSetup.configureHandler<
-  SmessTestSlackAuth,
+  DdlExampleAuth,
   ListChannelsInput,
   ListChannelsOutput
 >((handler) =>
@@ -15,6 +15,6 @@ export const listChannelsHandler = OperationHandlerSetup.configureHandler<
         const access_token = ctx.auth?.user.access_token as string;
         return request.withBearerToken(access_token).withBodyAsJson(input);
       })
-      .handleResponse((ctx, input, response) => response.parseWithBodyAsJson())
+      .handleResponse((_ctx, _input, response) => response.parseWithBodyAsJson())
   )
 );
