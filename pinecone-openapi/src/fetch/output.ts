@@ -9,4 +9,5 @@ export interface FetchOutput {
 	 * An index namespace name
 	 */
 	namespace?: string;
+	[k: string]: unknown;
 }

@@ -2,7 +2,7 @@ import { OperationHandlerTestSetup } from '@trayio/cdk-dsl/connector/operation/O
     import { OperationHandlerResult } from '@trayio/cdk-dsl/connector/operation/OperationHandler';
     import { queryHandler } from './handler';
     import '@trayio/cdk-runtime/connector/operation/OperationHandlerTestRunner';
-
+    
     OperationHandlerTestSetup.configureHandlerTest(queryHandler, (handlerTest) =>
         handlerTest
             .usingHandlerContext('test')
@@ -18,7 +18,7 @@ import { OperationHandlerTestSetup } from '@trayio/cdk-dsl/connector/operation/O
 						OperationHandlerResult.getSuccessfulValueOrFail(output);
                         expect(outputValue.matches).toEqual([{ id: 'test', score: 2, values: [2], sparseValues: { indices: [2], values: [2] }, metadata: {} }]);
 expect(outputValue.namespace).toEqual('test');
-
+                        
                     })
                     .finallyDoNothing()
 					)

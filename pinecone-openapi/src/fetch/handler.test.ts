@@ -13,12 +13,11 @@ import { OperationHandlerTestSetup } from '@trayio/cdk-dsl/connector/operation/O
                     .when(() => ({ ids: ['test'], namespace: 'test' }
 			))
                     .then(({ output }) => {
-						// console.log(output);
+						console.log(output);
                         const outputValue =
 						OperationHandlerResult.getSuccessfulValueOrFail(output);
                         expect(outputValue.vectors).toEqual({});
-expect(outputValue.namespace).toEqual('test');
-                        
+                        expect(outputValue.namespace).toEqual('test');         
                     })
                     .finallyDoNothing()
 					)

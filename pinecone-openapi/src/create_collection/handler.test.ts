@@ -13,7 +13,7 @@ import { OperationHandlerTestSetup } from '@trayio/cdk-dsl/connector/operation/O
                     .when(() => ({ name: 'test', source: 'test' }
 			))
                     .then(({ output }) => {
-						// console.log(output);
+						console.log(output);
                         const outputValue =
 						OperationHandlerResult.getSuccessfulValueOrFail(output);
                         {}
