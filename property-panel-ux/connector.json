@@ -2,7 +2,7 @@
     "name": "property-panel-ux",
     "version": "1.0",
     "title": "Property Panel UX",
-    "description": "An example connector showing how to use UI features in the property panel, including: field titles, descriptions (aka tooltips), default values, advanced properties and oneOf (aka dropdowns) field types.",
+    "description": "An example connector showing how to use UI features in the property panel, including: field titles, descriptions (i.e. tooltips), default values, advanced properties, enums (i.e. static dropdowns) and oneOf (i.e. dropdowns).",
     "service": {
         "name": "json-placeholder",
         "version": "1"
