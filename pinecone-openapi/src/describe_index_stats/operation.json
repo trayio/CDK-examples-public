@@ -1,0 +1,1 @@
+{"name":"DescribeIndexStats","title":"describe-index-stats","description":"The `DescribeIndexStats` operation returns statistics about the index's contents, including the vector count per namespace and the number of dimensions."}

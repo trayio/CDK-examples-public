@@ -1,0 +1,1 @@
+{"type":"object","additionalProperties":{},"properties":{"ids":{"type":"array","items":{"type":"string"}},"namespace":{"description":"An index namespace name","type":"string"}},"required":["ids"],"$schema":"http://json-schema.org/draft-07/schema#","advanced":[]}
