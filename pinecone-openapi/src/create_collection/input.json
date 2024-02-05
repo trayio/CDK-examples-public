@@ -1,0 +1,1 @@
+{"type":"object","additionalProperties":{},"properties":{"name":{"description":"The unique name of a collection.","type":"string"},"source":{"description":"The unique name of an index.","type":"string"}},"required":["name","source"],"$schema":"http://json-schema.org/draft-07/schema#","advanced":[]}

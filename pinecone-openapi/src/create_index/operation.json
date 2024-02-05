@@ -1,0 +1,1 @@
+{"name":"create_index","title":"create-index","description":"This operation creates a Pinecone index. You can use it to specify the measure of similarity, the dimension of vectors to be stored in the index, the numbers of replicas to use, and more."}

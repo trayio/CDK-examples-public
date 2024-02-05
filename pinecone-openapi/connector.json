@@ -1,0 +1,12 @@
+{
+    "name": "pinecone-openapi",
+    "version": "1.0",
+    "title": "Pinecone openapi",
+    "description": "",
+    "service": {
+        "name": "json-placeholder",
+        "version": "1"
+    },
+    "tags": ["service"],
+    "isTrigger": false
+}
