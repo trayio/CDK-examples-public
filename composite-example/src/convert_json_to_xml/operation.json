@@ -1,0 +1,5 @@
+{
+  "name": "convert_json_to_xml",
+  "title": "Convert JSON to XML",
+  "description": "Converts a JSON string to XML"
+}

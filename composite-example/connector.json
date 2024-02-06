@@ -1,0 +1,12 @@
+{
+    "name": "composite-example",
+    "version": "1.0",
+    "title": "Composite example",
+    "description": "",
+    "service": {
+        "name": "json-placeholder",
+        "version": "1"
+    },
+    "tags": ["service"],
+    "isTrigger": false
+}
