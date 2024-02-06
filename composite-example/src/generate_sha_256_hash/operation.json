@@ -1,0 +1,5 @@
+{
+  "name": "generate_sha_256_hash",
+  "title": "Generate SHA 256 Hash",
+  "description": "Generate a SHA 256 hash from a string"
+}

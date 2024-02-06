@@ -1,26 +1,25 @@
 import { OperationHandlerTestSetup } from "@trayio/cdk-dsl/connector/operation/OperationHandlerTest";
-import { getSomethingHandler } from "./handler";
+import { generateSha256HashHandler } from "./handler";
 import "@trayio/cdk-runtime/connector/operation/OperationHandlerTestRunner";
 
 OperationHandlerTestSetup.configureHandlerTest(
-  getSomethingHandler,
+  generateSha256HashHandler,
   (handlerTest) =>
     handlerTest
       .usingHandlerContext("test")
       .nothingBeforeAll()
-      .testCase("should do something", (testCase) =>
+      .testCase("should do correctly hash input string", (testCase) =>
         testCase
           .givenNothing()
-          .when(() => ({}))
+          .when(() => ({ value: "someString" }))
           .then(({ output }) => {
             if (output.isFailure) {
               throw new Error("Output is a failure, expected success");
             }
-            expect(output.value.results).toEqual(expect.any(Array));
-            expect(output.value.results[0]).toEqual({
-              title: expect.any(String),
-              body: expect.any(String),
-            });
+            expect(output.value.input).toEqual("someString");
+            expect(output.value.output).toEqual(
+              "6f0416d8003de967a2af13a93f47aaeded2885e4b6911690d84c384b80a6e56f"
+            );
           })
           .finallyDoNothing()
       )
