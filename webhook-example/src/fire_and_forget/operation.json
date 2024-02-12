@@ -1,0 +1,7 @@
+{	
+	"name": "fire_and_forget",
+	"title": "Auto respond with HTTP 200",
+	"description":
+		"Regardless of what webhook request is received, the webhook trigger responds immediately with an HTTP 200 status code. This ensures execution but has no validation.",
+	"delivery": "fire_and_forget"
+}

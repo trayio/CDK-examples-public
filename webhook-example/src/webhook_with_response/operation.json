@@ -1,0 +1,7 @@
+{
+	"name": "webhook_with_response",
+	"title": "Await workflow and respond",
+	"description":
+		"This allows you to configure your own response. A webhook request is received and the webhook trigger waits for the workflow to reply.",
+	"delivery": "request_response"
+}
