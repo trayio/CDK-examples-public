@@ -1,7 +1,7 @@
 {
-    "auth": {
-      "user": {
-        "access_token": ""
-      }
+  "auth": {
+    "user": {
+      "access_token": ""
     }
   }
+}
