@@ -1,0 +1,12 @@
+{
+    "name": "ddl-example",
+    "version": "1.0",
+    "title": "DDL Example Connector",
+    "description": "",
+    "service": {
+        "name": "slack",
+        "version": "5"
+    },
+    "tags": ["service"],
+    "isTrigger": false
+}

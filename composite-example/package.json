@@ -1,0 +1,44 @@
+{
+  "name": "composite-example",
+  "version": "1.0.0",
+  "description": "CompositeExample",
+  "engines": {
+    "node": ">=18.x"
+  },
+  "exports": {
+    "./*": "./dist/*.js"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "*",
+        "dist/*"
+      ]
+    }
+  },
+  "files": [
+    "/dist"
+  ],
+  "dependencies": {
+    "@trayio/axios": "^2.19.0",
+    "@trayio/cdk-dsl": "*",
+    "@trayio/cdk-runtime": "*",
+    "axios": "^1.6.7",
+    "xml-js": "^1.6.11"
+  },
+  "devDependencies": {
+    "@types/jest": "28.1.3",
+    "@types/node": "*",
+    "jest": "29.6.1",
+    "ts-jest": "29.1.1",
+    "ts-node": "10.9.1",
+    "typescript": "5.1.6",
+    "typescript-cp": "0.1.8"
+  },
+  "scripts": {
+    "reinstall": "rm package-lock.json && rm -rf node_modules && npm cache clean --force && npm install",
+    "clean": "rm -rf dist && rm tsconfig.tsbuildinfo",
+    "compile": "tsc --build && tscp >> /dev/null",
+    "test": "jest --config ./jest.config.js"
+  }
+}
