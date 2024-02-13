@@ -35,7 +35,7 @@ OperationHandlerTestSetup.configureHandlerTest(
 					.when(() => ({
 						source: {
 							file: { // FileReference object
-								"name": "rabbit.jpeg",
+								"name": "some.jpeg",
 								"url": "<... some jpeg file URL...>",
 								"mime_type": "image/jpeg",
 								"expires": 1707846419
