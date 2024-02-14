@@ -11,16 +11,12 @@ export const createPostHandler = OperationHandlerSetup.configureHandler<
 	handler.usingHttp((http) =>
 		http
 			.post('https://jsonplaceholder.typicode.com/posts')
-			.handleRequest((ctx, input, request) => {
-
-				const thing = request.withBodyAsJson({
+			.handleRequest((ctx, input, request) =>  request.withBodyAsJson({
 					title: input.title,
-					body: input.body,
+					body: input.body || '',
+					owner: input.owner,
 					userId: input.userId,
-				});
-				console.log(thing);
-				return thing;
-			}
+				})
 			)
 			.handleResponse((ctx, input, response) => response.parseWithBodyAsJson())
 	)

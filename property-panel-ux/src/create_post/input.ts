@@ -10,7 +10,7 @@ export type CreatePostInput = {
 	 * @description The body of the post
 	 * @default Post content goes here
 	 */
-	body: string;
+	body?: string;
 	/**
 	 * @title User ID
 	 * @description The ID of the user to create the post for
@@ -19,9 +19,15 @@ export type CreatePostInput = {
 	/**
 	 * @title Owner
 	 * @description The owner of the post (optional, either a non profit or business)
+	 */
+	owner: NonProfit | Business;
+
+	/**
+	 * @title Advanced Options
+	 * @description Additional options for creating the post
 	 * @advanced true
 	 */
-	owner?: NonProfit | Business
+	advancedOptions?: string;
 };
 
 /**

@@ -14,6 +14,7 @@ OperationHandlerTestSetup.configureHandlerTest(createPostHandler, (handlerTest) 
 				.when(() => ({
 					title: PostType.reminder,
 					body: 'bar',
+					owner: { name: 'non profit name'},
 					userId: 1,
 				}))
 				.then(({ output }) => {
