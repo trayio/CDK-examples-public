@@ -14,5 +14,8 @@ This repository contains examples of connectors built using Tray.io's [CDK](http
 4. property-panel-ux: An example connector showing how to use UI features in the property panel, including: field titles, descriptions (i.e. tooltips), default values, advanced properties, enums (i.e. static dropdowns) and oneOf (i.e. dropdowns).
 ![property-panel-ux example connector in the Tray builder UI](property-panel-ux.png "property-panel-ux example connector in the Tray builder UI")
 
-5. multipart-file-handling-example: this connector utilises imgur API to show an example of multipart uploading with a file, and downloading a file from imgur.
+5A. file-handling-example: this connector utilises dropbox API to show an example of uploading a file, and downloading a file.
+([Documentation for File Handling](https://developer.tray.io/developer-portal/cdk/guides/file-handling/file-handling/)).
+
+5B. multipart-file-handling-example: this connector utilises imgur API to show an example of multipart uploading with a file.
 ([Documentation for File Handling](https://developer.tray.io/developer-portal/cdk/guides/file-handling/file-handling/)).
