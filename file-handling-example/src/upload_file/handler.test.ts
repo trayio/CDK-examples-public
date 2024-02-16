@@ -14,7 +14,7 @@ OperationHandlerTestSetup.configureHandlerTest(
 					.givenNothing()
 					.when(() => ({
 						file_path: '/cdk-testing/meme.jpeg',
-						file: {
+						file: { //FileReference object from user input/workflow
 							name: "meme.jpg",
 							url: "https://i.imgur.com/CKVpBov.jpg",
 							mime_type: "image/jpeg",

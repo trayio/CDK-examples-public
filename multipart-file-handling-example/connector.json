@@ -4,7 +4,7 @@
 	"title": "Multipart file handling example",
 	"description": "",
 	"service": {
-		"name": "json-placeholder",
+		"name": "example-service",
 		"version": "1"
 	},
 	"tags": ["service"],
