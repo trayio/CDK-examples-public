@@ -12,7 +12,10 @@ OperationHandlerTestSetup.configureHandlerTest(
 			.testCase("should download a file", (testCase) =>
 				testCase
 					.givenNothing()
-					.when(() => ({ file_path: '/cdk-testing/meme.jpeg' }))
+					.when(() => ({
+						// File path in dropbox
+						file_path: '/cdk-testing/meme.jpeg'
+					}))
 					.then(({ output }) => {
 						// console.log(output);
 						const outputValue =

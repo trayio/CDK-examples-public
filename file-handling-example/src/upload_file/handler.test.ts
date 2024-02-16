@@ -13,9 +13,11 @@ OperationHandlerTestSetup.configureHandlerTest(
 				testCase
 					.givenNothing()
 					.when(() => ({
+						// File path in dropbox
 						file_path: '/cdk-testing/meme.jpeg',
 						file: { //FileReference object from user input/workflow
 							name: "meme.jpg",
+							 // This will typically be a signed S3 URL from the workflow
 							url: "https://i.imgur.com/CKVpBov.jpg",
 							mime_type: "image/jpeg",
 							expires: 0,
