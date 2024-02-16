@@ -1,0 +1,12 @@
+{
+	"name": "multipart-file-handling-example",
+	"version": "1.0",
+	"title": "Multipart file handling example",
+	"description": "",
+	"service": {
+		"name": "example-service",
+		"version": "1"
+	},
+	"tags": ["service"],
+	"isTrigger": false
+}

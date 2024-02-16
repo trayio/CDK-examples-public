@@ -1,0 +1,8 @@
+{
+    "auth": {
+        "user": {
+            "access_token": "<... imgur token ...>"
+        }
+    },
+    "app": {}
+}
