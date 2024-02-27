@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "channel": {
+      "title": "Channels",
+      "description": "The channel to send a message to",
+      "type": "string",
+      "lookup": {
+      }
+    },
+    "text": {
+      "title": "Message",
+      "description": "The message to send",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["channel", "text"],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "advanced": []
+}
