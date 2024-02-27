@@ -10,11 +10,9 @@ export const sendMessageHandler = OperationHandlerSetup.configureHandler<
 >((handler) =>
   handler.usingHttp((http) =>
     http
-      .post("https://slack.com/api/chat.postMessage")
-      .handleRequest((ctx, input, request) => {
-        const access_token = ctx.auth?.user.access_token as string;
-
-        return request.withBearerToken(access_token).withBodyAsJson(input);
+      .post("/chat.postMessage")
+      .handleRequest((_ctx, input, request) => {
+        return request.withBodyAsJson(input);
       })
       .handleResponse((_ctx, _input, response) =>
         response.parseWithBodyAsJson()
