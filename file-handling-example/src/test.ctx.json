@@ -1,8 +1,8 @@
 {
-    "auth": {
-        "user": {
-            "access_token": "<... dropbox token ...>"
-        }
+  "auth": {
+    "user": {
+      "access_token": "<... dropbox token ...>"
     },
     "app": {}
+  }
 }
