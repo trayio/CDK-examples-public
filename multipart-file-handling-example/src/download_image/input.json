@@ -1,1 +1,14 @@
-{"type":"object","properties":{"image_hash":{"title":"Image Hash","description":"The hash (ID) of the image","type":"string"}},"additionalProperties":false,"required":["image_hash"],"$schema":"http://json-schema.org/draft-07/schema#","advanced":[]}
+{
+  "type": "object",
+  "properties": {
+    "image_hash": {
+      "title": "Image Hash",
+      "description": "The hash (ID) of the image",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["image_hash"],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "advanced": []
+}
