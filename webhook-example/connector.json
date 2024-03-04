@@ -1,0 +1,12 @@
+{
+    "name": "webhook-example",
+    "version": "1.0",
+    "title": "Webhook example",
+    "description": "Replicating the webhook connector using CDK",
+    "service": {
+        "name": "json-placeholder",
+        "version": "1"
+    },
+    "tags": ["service"],
+    "isTrigger": true
+}

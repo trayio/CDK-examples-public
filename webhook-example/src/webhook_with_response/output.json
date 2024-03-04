@@ -1,0 +1,1 @@
+{"type":"object","properties":{"method":{"type":"string"},"path":{"type":"string"},"body":{"type":"string"},"query":{"type":"object","additionalProperties":false},"headers":{"type":"object","additionalProperties":false}},"additionalProperties":false,"required":["body","headers","method","path","query"],"$schema":"http://json-schema.org/draft-07/schema#","advanced":[]}

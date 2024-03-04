@@ -1,0 +1,7 @@
+{
+	"name": "acknowledge",
+	"title": "Validate and respond",
+	"description":
+		"A webhook request is received and validated. The webhook trigger responds to the webhook sender with a relevant HTTP status code.",
+	"delivery": "acknowledge"
+}
