@@ -4,9 +4,7 @@
     "channel": {
       "title": "Channels",
       "description": "The channel to send a message to",
-      "type": "string",
-      "lookup": {
-      }
+      "type": "string"
     },
     "text": {
       "title": "Message",

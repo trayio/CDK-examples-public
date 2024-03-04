@@ -20,8 +20,8 @@
 		"/dist"
 	],
 	"dependencies": {
-		"@trayio/cdk-dsl": "3.7.1",
-		"@trayio/cdk-runtime": "3.7.1",
+		"@trayio/cdk-dsl": "3.9.0",
+		"@trayio/cdk-runtime": "3.9.0",
 		"lodash": "^4.17.21"
 	},
 	"devDependencies": {
