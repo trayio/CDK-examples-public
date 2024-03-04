@@ -20,9 +20,8 @@
 		"/dist"
 	],
 	"dependencies": {
-		"@trayio/cdk-cli": "2.19.0",
-		"@trayio/cdk-dsl": "2.19.0",
-		"@trayio/cdk-runtime": "2.19.0",
+		"@trayio/cdk-dsl": "3.9.0",
+		"@trayio/cdk-runtime": "3.9.0",
 		"lodash": "^4.17.21"
 	},
 	"devDependencies": {
