@@ -1,7 +1,7 @@
 {
-	"name": "cdk-academy-badge",
+	"name": "globalconfig-example",
 	"version": "1.0.0",
-	"description": "CdkAcademyBadge",
+	"description": "Global Config Example",
 	"engines": {
 		"node": ">=18.x"
 	},
@@ -20,8 +20,9 @@
 		"/dist"
 	],
 	"dependencies": {
-		"@trayio/cdk-dsl": "*",
-		"@trayio/cdk-runtime": "*"
+		"@trayio/cdk-dsl": "3.9.0",
+		"@trayio/cdk-runtime": "3.9.0",
+		"lodash": "^4.17.21"
 	},
 	"devDependencies": {
 		"@types/jest": "28.1.3",

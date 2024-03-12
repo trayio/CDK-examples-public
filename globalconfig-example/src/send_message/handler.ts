@@ -1,11 +1,11 @@
 import { OperationHandlerSetup } from "@trayio/cdk-dsl/connector/operation/OperationHandlerSetup";
-import { DdlExampleAuth } from "../DdlExampleAuth";
+import { GlobalConfigExampleAuth } from "../GlobalConfigExampleAuth";
 import { SendMessageInput } from "./input";
 import { SendMessageOutput } from "./output";
 import { globalConfigHttp } from "../GlobalConfig";
 
 export const sendMessageHandler = OperationHandlerSetup.configureHandler<
-  DdlExampleAuth,
+  GlobalConfigExampleAuth,
   SendMessageInput,
   SendMessageOutput
 >((handler) =>

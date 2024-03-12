@@ -1,27 +1,21 @@
-// Test asserts
-// The response code is 200
-// The response is an array and has at least 1 element within it
 import { OperationHandlerTestSetup } from '@trayio/cdk-dsl/connector/operation/OperationHandlerTest';
 import { OperationHandlerResult } from '@trayio/cdk-dsl/connector/operation/OperationHandler';
-import { getRecordsHandler } from './handler'
+import { sendMessageHandler } from './handler'
 import '@trayio/cdk-runtime/connector/operation/OperationHandlerTestRunner';
 
 OperationHandlerTestSetup.configureHandlerTest(
-	getRecordsHandler,
+	sendMessageHandler,
 	(handlerTest) =>
 		handlerTest
 			.usingHandlerContext('test')
 			.nothingBeforeAll()
-			.testCase('should do something', (testCase) =>
+			.testCase('send a slack message', (testCase) =>
 				testCase
 					.givenNothing()
-					.when(() => ({ record_type: "contact" }))
+					.when(() => ({ channel: '<slack_channel_id>', text: 'blah2' }))
 					.then(({ output }) => {
-						//included for auditing purposes - comment out if you don't want it
-						console.log(output);
 						const outputValue = OperationHandlerResult.getSuccessfulValueOrFail(output)
-						//example test to check that the number of returned records is >= 1
-						expect(outputValue.records.length).toBeGreaterThanOrEqual(1);
+						expect(outputValue.ok).toBe(false)
 					})
 					.finallyDoNothing()
 			)

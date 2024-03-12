@@ -8,5 +8,6 @@
     "version": "1"
   },
   "tags": ["service"],
-  "isTrigger": false
+  "isTrigger": false,
+  "rawHttp": { "enabled": true }
 }

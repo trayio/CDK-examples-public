@@ -2,18 +2,19 @@ import { OperationHandlerSetup } from "@trayio/cdk-dsl/connector/operation/Opera
 import { TmdbAuth } from "../TmdbAuth";
 import { GetTopRatedMoviesInput } from "./input";
 import { GetTopRatedMoviesOutput } from "./output";
+import { globalConfigHttp } from "../GlobalConfig";
 
 export const getTopRatedMoviesHandler = OperationHandlerSetup.configureHandler<
   TmdbAuth,
   GetTopRatedMoviesInput,
   GetTopRatedMoviesOutput
 >((handler) =>
-  handler.usingHttp((http) =>
+  handler.withGlobalConfiguration(globalConfigHttp).usingHttp((http) =>
     http
-      .get("https://api.themoviedb.org/3/movie/top_rated")
-      .handleRequest((ctx, input, request) =>
-        request.withBearerToken(ctx.auth!.user.access_token).withoutBody()
+      .get("/3/movie/top_rated")
+      .handleRequest((_ctx, _input, request) => request.withoutBody())
+      .handleResponse((_ctx, _input, response) =>
+        response.parseWithBodyAsJson()
       )
-      .handleResponse((ctx, input, response) => response.parseWithBodyAsJson())
   )
 );

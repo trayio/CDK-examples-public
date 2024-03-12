@@ -1,7 +1,7 @@
 {
-  "name": "ddl-example",
+  "name": "globalconfig-example",
   "version": "1.0",
-  "title": "DDL Example Connector",
+  "title": "Global Config example Connector",
   "description": "",
   "service": {
     "name": "slack",

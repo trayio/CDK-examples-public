@@ -2,21 +2,23 @@ import { OperationHandlerSetup } from "@trayio/cdk-dsl/connector/operation/Opera
 import { TmdbAuth } from "../TmdbAuth";
 import { GetMoviesByGenreInput } from "./input";
 import { GetMoviesByGenreOutput } from "./output";
+import { globalConfigHttp } from "../GlobalConfig";
 
 export const getMoviesByGenreHandler = OperationHandlerSetup.configureHandler<
   TmdbAuth,
   GetMoviesByGenreInput,
   GetMoviesByGenreOutput
 >((handler) =>
-  handler.usingHttp((http) =>
+  handler.withGlobalConfiguration(globalConfigHttp).usingHttp((http) =>
     http
-      .get("https://api.themoviedb.org/3/discover/movie")
-      .handleRequest((ctx, input, request) =>
+      .get("/3/discover/movie")
+      .handleRequest((_ctx, input, request) =>
         request
           .addQueryString("with_genres", input.genre.toString())
-          .withBearerToken(ctx.auth!.user.access_token)
           .withoutBody()
       )
-      .handleResponse((ctx, input, response) => response.parseWithBodyAsJson())
+      .handleResponse((_ctx, _input, response) =>
+        response.parseWithBodyAsJson()
+      )
   )
 );
