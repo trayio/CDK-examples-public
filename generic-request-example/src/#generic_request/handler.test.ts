@@ -2,7 +2,6 @@ import { OperationHandlerTestSetup } from '@trayio/cdk-dsl/connector/operation/O
 import { OperationHandlerResult } from '@trayio/cdk-dsl/connector/operation/OperationHandler';
 import { genericRequestHandler } from './handler';
 import '@trayio/cdk-runtime/connector/operation/OperationHandlerTestRunner';
-import 'dotenv/config'
 
 OperationHandlerTestSetup.configureHandlerTest(
 	genericRequestHandler,

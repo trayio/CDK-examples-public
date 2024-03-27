@@ -5,12 +5,12 @@
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
-		"noImplicitAny": true, 
-		"strictNullChecks": true,                       
-		"noImplicitThis": true,            
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"noImplicitThis": true,
 		"useUnknownInCatchVariables": true,
-      "skipLibCheck": true,
-      "rootDir": "./src",
-      "outDir": "./dist"
-  }
+		"skipLibCheck": true,
+		"rootDir": "./src",
+		"outDir": "./dist"
+	}
 }
