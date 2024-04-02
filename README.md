@@ -19,3 +19,5 @@ This repository contains examples of connectors built using Tray.io's [CDK](http
 
 5B. multipart-file-handling-example: this connector utilises imgur API to show an example of multipart uploading with a file.
 ([Documentation for File Handling](https://developer.tray.io/developer-portal/cdk/guides/file-handling/file-handling/)).
+
+6. Error Handling Example: An example connector that demonstrates how to setup the error handler with JSON decoding and then use the body contents when returning an error to the user.
