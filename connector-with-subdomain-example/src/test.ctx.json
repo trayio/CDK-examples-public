@@ -1,0 +1,8 @@
+{
+  "auth": {
+    "user": {
+      "access_token": "<shopify_access_token>",
+      "#shop": "<shopify_subdomain>"
+    }
+  }
+}

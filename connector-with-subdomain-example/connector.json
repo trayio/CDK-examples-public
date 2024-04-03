@@ -1,0 +1,12 @@
+{
+  "name": "connector-with-subdomain-example",
+  "version": "1.0",
+  "title": "Connector with subdomain example",
+  "description": "",
+  "service": {
+    "name": "shopify",
+    "version": "4"
+  },
+  "tags": ["service"],
+  "isTrigger": false
+}
