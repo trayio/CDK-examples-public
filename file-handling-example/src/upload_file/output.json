@@ -1,1 +1,0 @@
-{"type":"object","properties":{"id":{"type":"number"},"title":{"type":"string"},"kind":{"type":"string"},"driveId":{"type":"string"},"fileExtension":{"type":"string"}},"additionalProperties":false,"required":["driveId","fileExtension","id","kind","title"],"$schema":"http://json-schema.org/draft-07/schema#","advanced":[]}

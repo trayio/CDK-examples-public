@@ -1,1 +1,0 @@
-{"type":"object","properties":{"json":{"type":"string"}},"additionalProperties":false,"required":["json"],"$schema":"http://json-schema.org/draft-07/schema#","advanced":[]}
