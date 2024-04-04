@@ -1,3 +1,5 @@
 dist
 node_modules
 .DS_Store
+**/src/**/input.json
+**/src/**/output.json

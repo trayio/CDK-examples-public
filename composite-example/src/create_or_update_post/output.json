@@ -1,1 +1,0 @@
-{"type":"object","properties":{"id":{"type":"number"},"userId":{"type":"number"},"title":{"type":"string"},"body":{"type":"string"}},"additionalProperties":false,"required":["body","id","title","userId"],"$schema":"http://json-schema.org/draft-07/schema#","advanced":[]}
