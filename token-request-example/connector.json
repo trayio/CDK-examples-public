@@ -1,0 +1,10 @@
+{
+  "name": "token-request-example",
+  "version": "1.0",
+  "title": "Token request example (Bizzabo)",
+  "description": "",
+  "service": { "name": "example-service", "version": "1" },
+  "tags": ["service"],
+  "isTrigger": false,
+  "rawHttp": { "enabled": true }
+}
