@@ -1,0 +1,12 @@
+name: 'get-all-folders-with-changes'
+description: 'Get all folders with changes.'
+inputs:
+  all_changed_files:
+    required: true
+    description: 'All changed files.'
+outputs:
+  changed_folders:
+    description: 'Changed folders.'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

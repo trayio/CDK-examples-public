@@ -1,0 +1,1 @@
+{"name":"example-connector","version":"1.0","title":"Example connector","description":"","service":{"name":"json-placeholder","version":"1"},"tags":["service"],"isTrigger":false,"rawHttp":{"enabled":true}}

@@ -21,3 +21,5 @@ This repository contains examples of connectors built using Tray.io's [CDK](http
 ([Documentation for File Handling](https://developer.tray.io/developer-portal/cdk/guides/file-handling/file-handling/)).
 
 6. Error Handling Example: An example connector that demonstrates how to setup the error handler with JSON decoding and then use the body contents when returning an error to the user.
+
+7. Github actions deployment pipeline: An example CI pipeline that deploys connectors using the CDK deployment API, [more info here](github-actions-deployment-pipeline/README.md)

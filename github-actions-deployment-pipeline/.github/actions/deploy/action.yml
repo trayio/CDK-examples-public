@@ -1,0 +1,76 @@
+name: "Deploy"
+description: "Deploys a connector to the Tray.io platform"
+inputs:
+  CONNECTOR_DIR_NAME:
+    description: "The name of the connector directory"
+    required: true
+  TRAY_API_KEY:
+    description: "The Tray.io API key"
+    required: true
+  API_BASE_URL:
+    description: "The base URL of the Tray.io API"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Read connector.json
+      shell: bash
+      id: connector_json
+      run: |
+        # Read in multi line file, appending a new line to the end to ensure detection of the EOF
+        echo 'jsonContent<<EOF' >> $GITHUB_OUTPUT
+        cat ${{inputs.CONNECTOR_DIR_NAME}}/connector.json  >> $GITHUB_OUTPUT
+        echo $'\n' >> $GITHUB_OUTPUT
+        echo EOF >> $GITHUB_OUTPUT
+    - name: Get connector name from connector.json
+      shell: bash
+      run: echo "CONNECTOR_NAME=${{ fromJson(steps.connector_json.outputs.jsonContent).name }}" >> $GITHUB_ENV
+    - name: Get connector version from connector.json
+      shell: bash
+      run: echo "CONNECTOR_VERSION=${{ fromJson(steps.connector_json.outputs.jsonContent).version }}" >> $GITHUB_ENV
+    - name: Install Tray.io CDK CLI
+      shell: bash
+      run: npm install -g @trayio/cdk-cli
+    - name: Build connector
+      shell: bash
+      run: |
+        cd ${{inputs.CONNECTOR_DIR_NAME}}
+        tray-cdk connector build
+    - name: Check for .tray directory
+      shell: bash
+      run: |
+        if [ ! -d ${{env.CONNECTOR_NAME}}/.tray ]; then
+          echo "The packaged connector directory couldn't be found"
+          exit 1
+        fi
+    - name: base64 encode zip and deploy connector
+      shell: bash
+      run: |
+        # Encode the file to base64
+        FILE_CONTENT_BASE64=$(base64 -w 0 ${{inputs.CONNECTOR_DIR_NAME}}/.tray/connector.zip)
+
+        # Prepare the JSON payload with the base64 encoded file content
+        PAYLOAD=$(printf '{"connectorSourceCode": "%s"}' "$FILE_CONTENT_BASE64")
+
+        # Write the payload to a temporary file
+        PAYLOAD_FILE=$(mktemp)
+        echo "$PAYLOAD" > $PAYLOAD_FILE
+
+        # Send the payload via curl and write the http status and response to the output
+        response=$(curl --silent --write-out "\nHTTP Status Code: %{http_code}\n" --output - --location '${{inputs.API_BASE_URL}}/cdk/v1/deployments/connectors/${{env.CONNECTOR_NAME}}/versions/${{env.CONNECTOR_VERSION}}/deploy-connector-from-source' \
+        --header 'Authorization: Bearer ${{inputs.TRAY_API_KEY}}' \
+        --header 'Content-Type: application/json' \
+        --data-binary "@$PAYLOAD_FILE")
+        echo "$response"
+
+        rm -f $PAYLOAD_FILE
+
+        # If our response doesn't end with a 200 status code, then fail the step
+        if [[ $response != *"HTTP Status Code: 200"* ]]; then
+          echo "Failed to deploy connector"
+          exit 1
+        fi
+    - name: Poll and check deployment status
+      shell: bash
+      run: bash .github/scripts/poll-deployment-status.sh ${{inputs.API_BASE_URL}} ${{inputs.TRAY_API_KEY}} ${{env.CONNECTOR_NAME}} ${{env.CONNECTOR_VERSION}}

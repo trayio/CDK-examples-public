@@ -1,0 +1,70 @@
+name: Deploy Connector
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      git_sha:
+        description: "SHA of the commit to publish"
+        required: true
+
+env:
+  FILES_IGNORE: |
+    .github/
+    terraform/
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      CONNECTOR_DIR_NAME: ${{steps.get-changed-folders.outputs.CONNECTOR_DIR_NAME}}
+      CONTAINS_CONNECTOR_CHANGES: ${{steps.get-changed-folders.outputs.CONTAINS_CONNECTOR_CHANGES}}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+            ref: ${{ inputs.git_sha }}
+            fetch-depth: 0
+      - name: Get all changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v44
+        with:
+          dir_names: true
+          dir_names_exclude_current_dir: true
+          dir_names_max_depth: 1
+          files_ignore: ${{ env.FILES_IGNORE }}
+          matrix: true
+      - name: Filter out deleted connectors
+        id: get-changed-folders
+        uses: ./.github/actions/filter-out-deleted-connectors
+        with:
+          all_changed_files: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
+
+  deploy:
+    if: needs.detect-changes.outputs.CONTAINS_CONNECTOR_CHANGES == 'true'
+    needs: [detect-changes]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        region: [US, EU, APAC]
+        include:
+          - region: US
+            API_BASE_URL: "https://api.tray.io"
+            TRAY_API_KEY: TRAY_API_KEY_US
+          - region: EU
+            API_BASE_URL: "https://api.eu1.tray.io"
+            TRAY_API_KEY: TRAY_API_KEY_EU
+          - region: APAC
+            API_BASE_URL: "https://api.ap1.tray.io"
+            TRAY_API_KEY: TRAY_API_KEY_APAC
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy connector
+        uses: ./.github/actions/deploy
+        with:
+          CONNECTOR_DIR_NAME: ${{ needs.detect-changes.outputs.CONNECTOR_DIR_NAME }}
+          API_BASE_URL: ${{ matrix.API_BASE_URL }}
+          TRAY_API_KEY: ${{ secrets[matrix.TRAY_API_KEY] }}
