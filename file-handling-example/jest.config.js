@@ -10,4 +10,5 @@ module.exports = {
 	testMatch: ['**/?(*.)+(test)\\.(ts)'],
 	testPathIgnorePatterns: ['/node_modules/', '/dist/'],
 	moduleDirectories: ['node_modules', 'src'],
+    testTimeout: 70000
 };

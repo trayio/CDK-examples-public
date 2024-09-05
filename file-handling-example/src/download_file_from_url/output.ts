@@ -1,5 +1,5 @@
 import { FileReference } from "@trayio/cdk-dsl/connector/operation/OperationHandler";
 
-export type DownloadFileOutput = {
+export type DownloadFileFromUrlOutput = {
   file: FileReference;
 };
