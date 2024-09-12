@@ -32,4 +32,6 @@ export type FileBinApiResponse = {
   file: File;
 };
 
-export type UploadFileToFilebinOutput = any;
+export type UploadFileToFilebinOutput = {
+  file: FileReference;
+};
