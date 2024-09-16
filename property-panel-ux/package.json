@@ -20,8 +20,8 @@
     "/dist"
   ],
   "dependencies": {
-    "@trayio/cdk-dsl": "3.9.0",
-    "@trayio/cdk-runtime": "3.9.0"
+    "@trayio/cdk-dsl": "*",
+    "@trayio/cdk-runtime": "*"
   },
   "devDependencies": {
     "@types/jest": "28.1.3",
