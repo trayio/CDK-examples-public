@@ -28,6 +28,14 @@ export type CreatePostInput = {
 	 * @advanced true
 	 */
 	advancedOptions?: string;
+
+	/**
+	 * @title Tags
+	 * @description The tags to add to the post
+	 * @items.title Tag
+	 * @items.description A tag to add to the post
+	 */
+	tags?: string[];
 };
 
 /**
