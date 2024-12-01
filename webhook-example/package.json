@@ -21,7 +21,7 @@
 	],
 	"dependencies": {
 		"@trayio/cdk-dsl": "1.5.0",
-		"@trayio/cdk-runtime": "1.5.0"
+		"@trayio/cdk-runtime": "3.9.0"
 	},
 	"devDependencies": {
 		"@types/jest": "28.1.3",
