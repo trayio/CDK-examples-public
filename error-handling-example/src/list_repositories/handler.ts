@@ -17,106 +17,82 @@ export const listRepositoriesHandler = OperationHandlerSetup.configureHandler<
     http
       .get("/user/repos")
       .handleRequest((_ctx, _input, request) => request.withoutBody())
-      .handleResponse((_ctx, _input, response) => {
-        /**
-         * This example operation handler demonstrates how error handling can be used.
-         * Different error types either show or obscure the error from the end user in the Tray workflow builder.
-         * Additionally, different error types either trigger a retry of the failed operation or not.
-         * This code is just an example and shouldn't be intepreted as a best practice.
-         * Different APIs may require different error handling strategies.
-         * 
-         * Any errors the connector encouters that aren't handled by the connector will be treated as a connector error.
-         * Causing the underlying error message to be obscured from the end user in the Tray workflow builder.
-         * And the failed operation will be retried two additional times.
-         */
+      .handleResponse(
+        (_ctx, _input, response) =>
+          /**
+           * This example demonstrates how to access error body content using
+           * withJsonErrorHandling and withErrorHandling.
+           *
+           * withJsonErrorHandling: For JSON error responses - gives you a parsed object
+           * withErrorHandling: For non-JSON responses (HTML, plain text, etc.) - gives you raw content
+           *
+           * Example 1: Using withJsonErrorHandling to access JSON error body
+           * The body parameter contains the parsed JSON error response from the API
+           */
+          response
+            .withJsonErrorHandling<{
+              message: string;
+              documentation_url?: string;
+            }>((body) => {
+              // Log the error body to show it's accessible
+              console.log("API Error Body:", JSON.stringify(body, null, 2));
 
-        const statusCode = response.getStatusCode();
+              const statusCode = response.getStatusCode();
 
-        /**
-         * If the status code is 200, we return the response as a successful result
-         */
-        if (statusCode === 200) {
-          return response.parseWithBodyAsJson();
-        }
-
-        /**
-         * If the status code is 402, 
-         * we return a user input error that will be visible in the Tray workflow builder 
-         * and will not trigger a retry of the failed operation
-         */
-        else if (statusCode === 402) {
-          return response
-            .withJsonErrorHandling<{ message: string }>((body) =>
-              OperationHandlerResult.failure(
-                OperationHandlerError.userInputError(
-                  `API returned a 402 error: User input error`,
-                  {
-                    statusCode: 402,
-                  }
-                )
-              )
-            ).parseWithBodyAsJson();
-        }
-
-        /**
-         * If the status code is 404, 
-         * we return a connector error that will be not be visible in the Tray workflow builder. 
-         * The user will see "Unfortunately, the connector unexpectedly failed". 
-         * The failed operation will be retried two additional times.
-         */
-        else if (statusCode === 404) {
-          return response
-            .withJsonErrorHandling<{ message: string }>((body) =>
-              OperationHandlerResult.failure(
-                OperationHandlerError.connectorError(
-                  `API returned a 404 error: URL not found`,
-                  {
-                    statusCode: 404,
-                  }
-                )
-              )
-            ).parseWithBodyAsJson();
-        }
-
-        /**
-         * If the status code is 401,
-         * we return a OAuth refresh error.
-         * The auth token will be refreshed and the failed operation will be retried two additional times.
-         * The user will see the error message in the Tray workflow builder.
-         */
-        else if (statusCode === 401) {
-          return response
-            .withJsonErrorHandling<{ message: string }>((body) =>
-              OperationHandlerResult.failure(
-                OperationHandlerError.oauthRefreshError(
-                  `API returned a 401 error: OAuth refresh error`,
-                  {
-                    statusCode: 401,
-                  }
-                )
-              )
-            ).parseWithBodyAsJson();
-        }
-        /**
-         * Any other status code will be treated as a failure,
-         * we'll return an API error so that the message will be visible in the Tray workflow builder
-         * and the failed operation will be retried two additional times.
-         */
-        else {
-          return response
-            .withJsonErrorHandling<{ message: string }>((body) =>
-              OperationHandlerResult.failure(
-                OperationHandlerError.apiError(
-                  `API returned an error: ${body.message
-                  }, status code: ${response.getStatusCode()}`,
-                  {
-                    statusCode: (response.getStatusCode()),
-                  }
-                )
-              )
-            )
+              // Handle different error types based on status code
+              if (statusCode === 401) {
+                return OperationHandlerResult.failure(
+                  OperationHandlerError.oauthRefreshError(
+                    `Authentication failed: ${body.message}`,
+                    {
+                      statusCode,
+                      errorBody: body,
+                    }
+                  )
+                );
+              } else if (statusCode === 404) {
+                return OperationHandlerResult.failure(
+                  OperationHandlerError.userInputError(
+                    `Resource not found: ${body.message}`,
+                    {
+                      statusCode,
+                      errorBody: body,
+                    }
+                  )
+                );
+              } else {
+                return OperationHandlerResult.failure(
+                  OperationHandlerError.apiError(
+                    `GitHub API Error: ${body.message}`,
+                    {
+                      statusCode,
+                      errorBody: body,
+                    }
+                  )
+                );
+              }
+            })
             .parseWithBodyAsJson()
-        }
-      })
+
+        /**
+         * Example 2: Using withErrorHandling for non-JSON responses
+         * Uncomment this block and comment out the above to see withErrorHandling in action
+         *
+         * response
+         *   .withErrorHandling((body) => {
+         *     // body can be string, number, boolean, DynamicObject, or DynamicArray
+         *     const errorBodyStr = typeof body === "string" ? body : JSON.stringify(body);
+         *     console.log("Error Body:", errorBodyStr.substring(0, 200));
+         *
+         *     return OperationHandlerResult.failure(
+         *       OperationHandlerError.apiError(
+         *         `API Error: ${errorBodyStr.substring(0, 100)}`,
+         *         { statusCode: response.getStatusCode() }
+         *       )
+         *     );
+         *   })
+         *   .parseWithBodyAsJson();
+         */
+      )
   )
 );
