@@ -12,6 +12,7 @@ This repository contains examples of connectors built using Tray.io's [CDK](http
 ([Documentation for DDL Implementation](https://developer.tray.ai/developer-portal/cdk/dsl-reference/#ddl-dynamic-dropdown-lists)).
 
 4. property-panel-ux: An example connector showing how to use UI features in the property panel, including: field titles, descriptions (i.e. tooltips), default values, advanced properties, enums (i.e. static dropdowns) and oneOf (i.e. dropdowns).
+
 ![property-panel-ux example connector in the Tray builder UI](property-panel-ux.png "property-panel-ux example connector in the Tray builder UI")
 
 5A. file-handling-example: this connector utilises dropbox API to show an example of uploading a file, and downloading a file.
