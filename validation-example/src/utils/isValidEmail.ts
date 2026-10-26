@@ -34,5 +34,5 @@ export function isValidEmail<T extends hasEmail>(validation: OperationHandlerInp
             // If all checks pass, the email is valid
             return true;
         })
-        .errorMessage((ctx, input) => 'Email is not valid is not in a valid format');
+        .errorMessage((ctx, input) => 'Email is not in a valid format');
 }

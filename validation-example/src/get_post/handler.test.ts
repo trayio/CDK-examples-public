@@ -56,7 +56,7 @@ OperationHandlerTestSetup.configureHandlerTest(getPostHandler, (handlerTest) =>
 
 					expect(output.isFailure).toEqual(true);
 					if (output.isFailure) {
-						expect(output.error.message).toEqual('Email is not valid is not in a valid format');
+						expect(output.error.message).toEqual('Email is not in a valid format');
 					}
 				})
 				.finallyDoNothing()

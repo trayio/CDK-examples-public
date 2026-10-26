@@ -25,7 +25,7 @@ export const webhookRequestHandler =
     OperationHandlerSetup.configureTriggerRequestHandler<MyTriggerAuth, AcknowledgeInput, AcknowledgeOutput>((handler) =>
         handler.usingComposite(async (auth, { input, request }, invoke) => {
             /*
-             * This is the _request operation, it parses the webhook callback and return a parsed output or an error, including an error type that will skip the execution of a workflow
+             * This is the _request operation, it parses the webhook callback and returns a parsed output or an error, including an error type that will skip the execution of a workflow
              *
              * It takes a value that has two fields, "input" of type "SimpleWebhookInput" (the input schema of this trigger) and "request" of type "TriggerOperationHttpRequest" which represents the http
              * request we received from trigger ingestion service (replacement of sniper), that type is generic, so it is the same for all triggers that have a _request operation
